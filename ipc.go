@@ -50,10 +50,10 @@ type IPCClient struct {
 }
 
 // NewIPCClient creates a new IPCClient connected to the given socket.
-func NewIPCClient(socket string) *IPCClient {
+func NewIPCClient(socket string, timeout time.Duration) *IPCClient {
 	c := &IPCClient{
 		socket:  socket,
-		timeout: 2 * time.Second,
+		timeout: timeout,
 		comm:    make(chan *request),
 		reqMap:  make(map[int]*request),
 	}
